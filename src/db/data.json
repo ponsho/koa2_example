@@ -1,0 +1,14 @@
+[
+  {
+    "name": "test1",
+    "address" : {
+      "street" : "street1"
+    }
+  },
+  {
+    "name": "test2",
+    "address" : {
+      "street" : "street2"
+    }
+  }
+]

@@ -7,8 +7,8 @@
     "node": ">=6.3.1"
   },
   "scripts": {
-    "start": "nodemon lib/index.js --exec babel-node",
-    "build": "babel lib -d dist ",
+    "start": "eslint . && nodemon index.js --exec babel-node",
+    "build": "babel index.js -d dist ",
     "serve": "node dist/index.js",
     "test": "mocha --compilers js:babel-register --require babel-polyfill"
   },
@@ -29,6 +29,7 @@
   "dependencies": {
     "eslint": "^3.2.2",
     "koa": "^2.0.0",
+    "koa-morgan": "^1.0.1",
     "mongoose": "^4.5.8",
     "winston": "^2.2.0"
   }

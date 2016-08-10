@@ -1,5 +1,9 @@
 {
   "parser": "babel-eslint",
   "plugins": ["node"],
-  "extends": ["eslint:recommended", "plugin:node/recommended"]
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "env": {
+    "mocha": true,
+    "node": true
+  }
 }

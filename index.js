@@ -1,7 +1,10 @@
 import Koa from 'koa';
 import logger from 'winston';
+import morgan from 'koa-morgan';
 
 const app = new Koa();
+
+app.use(morgan('dev'));
 
 app.use(async (ctx, next) => {
     // call the next middleware below
@@ -11,6 +14,7 @@ app.use(async (ctx, next) => {
 app.use(async (ctx) => {
     // no more next();
     // head back up the stack
+    logger.info('requested!');
     ctx.body = 'Hello world';
 });
 
