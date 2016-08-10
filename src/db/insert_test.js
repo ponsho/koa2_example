@@ -5,10 +5,16 @@ async function importData() {
     await db.User.insertMany(data);
 }
 
+async function listUsers() {
+    return await db.User.find().exec();
+}
+
 async function connect() {
     try {
         await importData();
         console.log('inserted!');
+        let users = await listUsers();
+        console.log(users);
         await db.close();
     } catch(err) {
         throw err;
