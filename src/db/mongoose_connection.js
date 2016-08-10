@@ -1,31 +1,19 @@
 import mongoose from 'mongoose';
-import data from './data.json';
+
+// Configure Mongoose to use Node promises.
+// By default mongoose use a promise implementation
+// that doesn't handle errors.
+mongoose.Promise = Promise;
 
 
-mongoose.Promise = global.Promise;
 const url = 'mongodb://localhost:27017/test';
+mongoose.connect(url);
 
-async function importData() {
-    const userSchema = new mongoose.Schema({
-        name: String,
-        address: Object,
-    });
+// Models
+import User from '../models/users';
 
-    const User = mongoose.model('User', userSchema);
-    await User.insertMany(data);
+
+export default {
+    User,
+    close() { mongoose.disconnect(); }
 }
-async function connect() {
-    try {
-        await mongoose.connect(url);
-        await importData();
-    } catch(err) {
-        throw err;
-    }
-}
-
-connect();
-
-// mongoose.connect(url)
-//     .then(importData)
-//     .catch(() => console.log('Could not connect!'));
-
