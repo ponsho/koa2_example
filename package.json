@@ -10,7 +10,7 @@
     "start": "eslint . && nodemon index.js --exec babel-node",
     "build": "babel index.js -d dist ",
     "serve": "node dist/index.js",
-    "test": "mocha --compilers js:babel-register --require babel-polyfill"
+    "test": "mocha --compilers js:babel-register --require babel-polyfill test"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +22,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.11.6",
     "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",
     "eslint-plugin-babel": "^3.3.0",
@@ -31,6 +32,7 @@
     "mocha": "^3.0.1",
     "nodemon": "^1.10.0",
     "sinon": "^1.17.5",
+    "sinon-as-promised": "^4.0.2",
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {

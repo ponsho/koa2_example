@@ -1,39 +1,21 @@
 import bcrypt from 'bcrypt-as-promised';
 
-
-const saltFactor = 10;
-async function t() {
+export async function hashWithSalt(pwd) {
   try {
-    const salt = await bcrypt.genSalt(10);
-    //console.log(salt);
-
-    const hashedPwd = await bcrypt.hash('hello', salt);
-    //console.log(hashedPwd);
-
-    const isMatch = await bcrypt.compare('hello', hashedPwd);
-    console.log('the fuck!');
-  } catch(err) {
-    console.log(err);
-  }
-}
-//
-//t();
-
-
-async function salt() {
-  try {
-    return await bcrypt.genSalt(10);
+    return await bcrypt.hash(pwd);
   } catch(err) {
     throw err;
   }
 }
 
-export async function hashAndSalt(pwd) {
-  try{
-    return await bcrypt.hash(pwd, salt());
-  } catch(err) {
+export async function compare(input, pw) {
+  try {
+    await bcrypt.compare(input, pw);
+    return true;
+  } catch (err) {
+    if(err instanceof bcrypt.MISMATCH_ERROR) {
+      return false;
+    }
     throw err;
   }
 }
-
-
