@@ -1,9 +1,16 @@
 {
   "parser": "babel-eslint",
-  "plugins": ["node"],
-  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "extends": "airbnb",
   "env": {
-    "mocha": true,
-    "node": true
+    "node": true,
+    "mocha": true
+  },
+  "plugins": [
+    "babel"
+  ],
+  "rules": {
+    "generator-star-spacing": 0,
+    "babel/generator-star-spacing": 1,
+    "no-param-reassign": [2, { "props": false }],
   }
 }
