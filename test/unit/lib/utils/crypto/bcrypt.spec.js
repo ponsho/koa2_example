@@ -1,17 +1,7 @@
-import chai, { expect } from 'chai';
-import chaiAsPromised from 'chai-as-promised';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-
-import * as bcrypt_utils from '../../src/lib/bcrypt_utils';
 import * as bcrypt from 'bcrypt-as-promised';
+const bcrypt_utils = require(`${rootDir}/src/lib/utils/crypto/bcrypt`);
 
-require('sinon-as-promised');
-
-chai.use(chaiAsPromised);
-chai.use(sinonChai);
-
-describe('Bcrypt utils', () => {
+describe('bcrypt utils', () => {
   let sandbox;
 
   beforeEach(function () {
@@ -51,7 +41,7 @@ describe('Bcrypt utils', () => {
 
     it('should rethrow any error happening in the bcrypt compare function ', function() {
       sandbox.stub(bcrypt.default, 'compare').rejects('fail');
-      return expect(bcrypt_utils.compare('a','b')).to.rejectedWith(Error);
+      return expect(bcrypt_utils.compare('a','b')).to.be.rejectedWith(Error);
     });
   });
 
