@@ -1,12 +1,10 @@
-import mongoose from './db_config';
+import mongoose from 'mongoose';
+import connectionString  from './mongoose_config';
 
 // Models
 import User from '../models/users';
 
-
-
-const url = 'mongodb://localhost:27017/test';
-mongoose.connect(url);
+mongoose.connect(connectionString);
 export default {
   User,
   close() {
